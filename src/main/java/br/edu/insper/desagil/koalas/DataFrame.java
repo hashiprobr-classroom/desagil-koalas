@@ -35,6 +35,10 @@ public class DataFrame {
 		return s;
 	}
 
+	public double avg(List<Double> values) {
+		return sum(values) / values.size();
+	}
+
 	public double min(String label) {
 		List<Double> values = getValues(label);
 
@@ -68,13 +72,13 @@ public class DataFrame {
 	public double avg(String label) {
 		List<Double> values = getValues(label);
 
-		return sum(values) / values.size();
+		return avg(values);
 	}
 
 	public double var(String label) {
 		List<Double> values = getValues(label);
 
-		double m = sum(values) / values.size();
+		double m = avg(values);
 
 		double s = 0;
 		for (double value : values) {
@@ -86,7 +90,7 @@ public class DataFrame {
 	public double std(String label) {
 		List<Double> values = getValues(label);
 
-		double m = sum(values) / values.size();
+		double m = avg(values);
 
 		double s = 0;
 		for (double value : values) {
